@@ -1,5 +1,7 @@
 package com.biblioteca.modelo;
 
+import java.util.Scanner;
+
 /**
  * Representa un libro en el sistema de biblioteca
  */
@@ -17,6 +19,33 @@ public class Libro {
         this.añoPublicacion = añoPublicacion;
         this.disponible = true;
     }
+    
+    // Metodos        
+    public static String validarIsbn(Scanner sc) {
+        String isbn;        
+        
+        while (true) {            
+            // Entrada por consola
+            isbn = sc.nextLine();            
+            // Eliminar guiones
+            String isbnLimpio = isbn.replace("-", "");
+            
+            // La longitud debe ser 13 caracteres
+            if (isbnLimpio.length() != 13) {
+                System.out.println("El código ISBN introducido debe tener exactamente trece dígitos.");
+                continue;
+            }
+            
+            // Comprobar que solo sean dígitos
+            if (!isbnLimpio.matches("\\d{13}")) {
+                System.out.println("El ISBN solo puede contener valores numéricos y la separación por guiones es opcional");
+                continue;
+            }
+            
+            return isbn;
+        }
+    }
+    
     
     // Getters y Setters
     public String getTitulo() {

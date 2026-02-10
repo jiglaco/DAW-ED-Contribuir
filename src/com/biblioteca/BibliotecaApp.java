@@ -93,7 +93,7 @@ public class BibliotecaApp {
         System.out.print("Autor: ");
         String autor = scanner.nextLine();
         System.out.print("ISBN: ");
-        String isbn = scanner.nextLine();
+        String isbn = Libro.validarIsbn(scanner);
         System.out.print("Año de publicación: ");
         int año = Integer.parseInt(scanner.nextLine());
         
