@@ -93,8 +93,17 @@ public class BibliotecaApp {
         String titulo = scanner.nextLine();
         System.out.print("Autor: ");
         String autor = scanner.nextLine();
-        System.out.print("ISBN: ");
-        String isbn = Libro.validarIsbn(scanner);
+        String isbn;
+        while (true) {
+            System.out.print("ISBN: ");
+            isbn = scanner.nextLine();
+
+            if (Libro.validarIsbn(isbn)) {
+                break;
+            } else {
+                System.out.println("Error: El ISBN debe tener 13 dígitos (puede incluir guiones).");
+            }
+        }
 
         int año = 0; 
         boolean valido = false;

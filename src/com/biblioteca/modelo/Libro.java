@@ -21,7 +21,7 @@ public class Libro {
     }
     
     // Metodos        
-    public static String validarIsbn(Scanner sc) {
+    public static String introducirIsbn(Scanner sc) {
         String isbn;        
         
         while (true) {            
@@ -44,6 +44,25 @@ public class Libro {
             
             return isbn;
         }
+    }
+    
+    public static boolean validarIsbn(String isbn) {
+        // La entrada no debe estar vacía
+        if (isbn == null) {
+            return false;
+        }
+        
+        // La longitud debe ser 13 caracteres excluyendo guiones
+        String isbnLimpio = isbn.replace("-", "");
+        if (isbnLimpio.length() != 13) {
+            return false;
+        }
+        
+        // Comprobar que solo sean dígitos
+        if (!isbnLimpio.matches("\\d{13}")) {
+            return false;
+        }
+        return true;
     }
     
     
